@@ -26,9 +26,9 @@
 
  ## Requirements
  - To install this script you need the following programmes installed in your system.
-  - ```
+   ```
     Basic Arch Linux System with NetworkManager and xserver.
-    ```
+   ```
 
  ## Installation
  - You can install my configuration on Arch-based systems using `install.sh`script.
