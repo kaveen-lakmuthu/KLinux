@@ -1,4 +1,11 @@
 # KLinux
+> [!WARNING]
+> Run this script at your own risk.
+
+> [!NOTE]
+> This installation script still contains only the Qtile configs.
+> Other configs will be available soon.
+> 
 ## Table of Content
 - [Introduction](#1-introduction)
     - [Overview](#11-overview)
