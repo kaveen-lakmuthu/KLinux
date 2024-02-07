@@ -35,18 +35,24 @@ PACKAGES=(
     zsh
 )
 
-# Check if Script is Run as Root
-if [[ $EUID -ne 0 ]]; then
-    echo "Please run this script as 'sudo ./install.sh'" 2>&1
+# Check if Script is Run as user
+if
+if [[ $EUID -ne 1000 ]]; then
+    echo "====================================================" 2>&1
+    echo "You must be a non-root user to run this script" 2>&1
+    echo "Please don't run this as root" 2>&1
+    echo "====================================================" 2>&1
     exit 1
 fi
 
-echo "# _   __ _     _ "                 
-echo "#| | / /| |   (_) "                
-echo "#| |/ / | |    _ _ __  _   ___  __ "
-echo "#|    \ | |   | | '_ \| | | \ \/ / "
-echo "#| |\  \| |___| | | | | |_| |>  < "
-echo "#\_| \_/\_____/_|_| |_|\__,_/_/\_\ "
+echo "=========================================="
+echo "|    _   __ _     _                      | "
+echo "|   | | / /| |   (_)                     | "
+echo "|   | |/ / | |    _ _ __  _   ___  __    | "
+echo "|   |    \ | |   | | '_ \| | | \ \/ /    | "
+echo "|   | |\  \| |___| | | | | |_| |>  <     | "
+echo "|   \_| \_/\_____/_|_| |_|\__,_/_/\_\    | "
+echo "=========================================="
 
 username=$(id -u -n 1000)
 home_dir=$(eval echo ~$username)
@@ -61,15 +67,17 @@ mkdir -p $home_dir/.cache
 mkdir -p $home_dir/.cache/zsh
 touch $home_dir/.cache/zsh/history
 mkdir -p $home_dir/Downloads
-chown -R $username:$username /home/$username
+# chown -R $username:$username /home/$username
 
 # make user directories
 cd $home_dir
 
 # Install the required packages
+echo "==========================="
 echo "Installing dependencies..."
+echo "==========================="
 
-pacman -Syu --needed "${PACKAGES[@]}" || {
+sudo pacman -Syu --needed "${PACKAGES[@]}" || {
     echo "Failed to install dependencies. Exiting."
     exit 1
 }
@@ -77,12 +85,15 @@ pacman -Syu --needed "${PACKAGES[@]}" || {
 xdg-user-dirs-update
 
 # Copy the configuration files
+echo "==============================="
 echo "Copying configuration files..."
+echo "==============================="
+
 cd $home_dir/Downloads
 
 # cloning qtile config
 
-git clone https://github.com/kaveen-lakmuthu/qtile.git $home_dir/.config/qtile || {
+git clone https://github.com/kaveen-lakmuthu/qtile.git $home_dir/.config/ || {
     echo "Failed to copy the configuration file. Exiting."
     exit 1
 }
@@ -108,9 +119,11 @@ git clone https://github.com/kaveen-lakmuthu/k-zsh.git || {
 mv k-picom/picom.conf $home_dir/.config/picom/picom.conf
 mv KAlacritty/alacritty.toml $home_dir/.config/alacritty/alacritty.toml
 mv k-zsh/.zshenv $home_dir/.zshenv
-mv k-zsh/zsh $home_dir/.config/zsh
+mv k-zsh/zsh/ $home_dir/.config/zsh
+
 rm -rf k-picom KAlacritty k-zsh
 
+cd $home_dir
 
 # Installing starship prompt
 curl -sS https://starship.rs/install.sh | sh
@@ -128,6 +141,13 @@ rm -rf pfetch-master master.zip
 
 cd $home_dir
 
+# Set the default shell to zsh
+chsh -s /bin/zsh $username
+
+# make the user the owner of the files all files in the home directory
+chown -R $username:$username /home/$username
+chown -R $username:$username /home/$username/.config
+
 # Set the default wallpaper
 nitrogen --set-auto /usr/share/backgrounds/archlinux/
 
@@ -144,5 +164,6 @@ echo "exec qtile start" > $home_dir/.xinitrc
 sudo systemctl enable lightdm.service
 
 # Print success message
-echo "Qtile config installed successfully!"
-
+echo "========================================"
+echo "| Qtile config installed successfully! | "
+echo "========================================"
