@@ -82,7 +82,7 @@ cd $home_dir/Downloads
 
 # cloning qtile config
 
-git clone https://github.com/kaveen-lakmuthu/qtile.git $home_dir/.config/ || {
+git clone https://github.com/kaveen-lakmuthu/qtile.git $home_dir/.config/qtile || {
     echo "Failed to copy the configuration file. Exiting."
     exit 1
 }
@@ -108,7 +108,7 @@ git clone https://github.com/kaveen-lakmuthu/k-zsh.git || {
 mv k-picom/picom.conf $home_dir/.config/picom/picom.conf
 mv KAlacritty/alacritty.toml $home_dir/.config/alacritty/alacritty.toml
 mv k-zsh/.zshenv $home_dir/.zshenv
-mv k-zsh/ $home_dir/.config/zsh
+mv k-zsh/zsh $home_dir/.config/zsh
 rm -rf k-picom KAlacritty k-zsh
 
 
