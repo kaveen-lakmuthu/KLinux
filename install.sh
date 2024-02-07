@@ -79,37 +79,37 @@ xdg-user-dirs-update
 # Copy the configuration files
 echo "Copying configuration files..."
 
-curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/config.py > $home_dir/.config/qtile/config.py || {
+curl -OL https://github.com/kaveen-lakmuthu/qtile/blob/main/config.py > $home_dir/.config/qtile/config.py || {
     echo "Failed to copy the configuration file. Exiting."
     exit 1
 }
-curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/autostart_once.sh > $home_dir/.config/qtile/autostart_once.sh || {
+curl -OL https://github.com/kaveen-lakmuthu/qtile/blob/main/autostart_once.sh > $home_dir/.config/qtile/autostart_once.sh || {
     echo "Failed to copy the autostart file. Exiting."
     exit 1
 }
-curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/qtilelogo.png > $home_dir/.config/qtile/qtilelogo.png || {
+curl -OL https://github.com/kaveen-lakmuthu/qtile/blob/main/qtilelogo.png > $home_dir/.config/qtile/qtilelogo.png || {
     echo "Failed to copy the qtile logo. Exiting."
     exit 1
 }
 
 # Copy picom configuration
-curl -O https://github.com/kaveen-lakmuthu/k-picom/blob/main/picom.conf > $home_dir/.config/picom/picom.conf || {
+curl -OL https://github.com/kaveen-lakmuthu/k-picom/blob/main/picom.conf > $home_dir/.config/picom/picom.conf || {
     echo "Failed to copy the picom configuration file. Exiting."
     exit 1
 }
 
 # Copy alacritty configuration
-curl -O https://github.com/kaveen-lakmuthu/KAlacritty/blob/main/alacritty.toml > $home_dir/.config/alacritty/alacritty.toml || {
+curl -OL https://github.com/kaveen-lakmuthu/KAlacritty/blob/main/alacritty.toml > $home_dir/.config/alacritty/alacritty.toml || {
     echo "Failed to copy the alacritty configuration file. Exiting."
     exit 1
 }
 
 # Copy zsh configuration
-curl -O https://github.com/kaveen-lakmuthu/k-zsh/blob/main/.zshenv > $home_dir/.zshenv || {
+curl -OL https://github.com/kaveen-lakmuthu/k-zsh/blob/main/.zshenv > $home_dir/.zshenv || {
     echo "Failed to copy the zsh configuration file. Exiting."
     exit 1
 }
-curl -O https://github.com/kaveen-lakmuthu/k-zsh/tree/main/zsh > $home_dir/.config/zsh || {
+curl -OL https://github.com/kaveen-lakmuthu/k-zsh/tree/main/zsh > $home_dir/.config/zsh || {
     echo "Failed to copy the zsh configuration file. Exiting."
     exit 1
 }
