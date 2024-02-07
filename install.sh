@@ -56,7 +56,7 @@ mkdir -p $home_dir/.fonts
 mkdir -p $home_dir/.config/qtile
 mkdir -p $home_dir/.config/picom
 mkdir -p $home_dir/.config/alacritty
-mkdir -p $home_dir/.config/zsh
+# mkdir -p $home_dir/.config/zsh
 mkdir -p $home_dir/.cache
 mkdir -p $home_dir/.cache/zsh
 touch $home_dir/.cache/zsh/history
@@ -79,37 +79,37 @@ xdg-user-dirs-update
 # Copy the configuration files
 echo "Copying configuration files..."
 
-curl https://github.com/kaveen-lakmuthu/qtile/blob/main/config.py > $home_dir/.config/qtile/config.py || {
+curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/config.py > $home_dir/.config/qtile/config.py || {
     echo "Failed to copy the configuration file. Exiting."
     exit 1
 }
-curl https://github.com/kaveen-lakmuthu/qtile/blob/main/autostart_once.sh > $home_dir/.config/qtile/autostart_once.sh || {
+curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/autostart_once.sh > $home_dir/.config/qtile/autostart_once.sh || {
     echo "Failed to copy the autostart file. Exiting."
     exit 1
 }
-curl https://github.com/kaveen-lakmuthu/qtile/blob/main/qtilelogo.png > $home_dir/.config/qtile/qtilelogo.png || {
+curl -O https://github.com/kaveen-lakmuthu/qtile/blob/main/qtilelogo.png > $home_dir/.config/qtile/qtilelogo.png || {
     echo "Failed to copy the qtile logo. Exiting."
     exit 1
 }
 
 # Copy picom configuration
-curl https://github.com/kaveen-lakmuthu/k-picom/blob/main/picom.conf > $home_dir/.config/picom/picom.conf || {
+curl -O https://github.com/kaveen-lakmuthu/k-picom/blob/main/picom.conf > $home_dir/.config/picom/picom.conf || {
     echo "Failed to copy the picom configuration file. Exiting."
     exit 1
 }
 
 # Copy alacritty configuration
-curl https://github.com/kaveen-lakmuthu/KAlacritty/blob/main/alacritty.toml > $home_dir/.config/alacritty/alacritty.toml || {
+curl -O https://github.com/kaveen-lakmuthu/KAlacritty/blob/main/alacritty.toml > $home_dir/.config/alacritty/alacritty.toml || {
     echo "Failed to copy the alacritty configuration file. Exiting."
     exit 1
 }
 
 # Copy zsh configuration
-curl https://github.com/kaveen-lakmuthu/k-zsh/blob/main/.zshenv > $home_dir/.zshenv || {
+curl -O https://github.com/kaveen-lakmuthu/k-zsh/blob/main/.zshenv > $home_dir/.zshenv || {
     echo "Failed to copy the zsh configuration file. Exiting."
     exit 1
 }
-curl https://github.com/kaveen-lakmuthu/k-zsh/tree/main/zsh > $home_dir/.config/zsh || {
+curl -O https://github.com/kaveen-lakmuthu/k-zsh/tree/main/zsh > $home_dir/.config/zsh || {
     echo "Failed to copy the zsh configuration file. Exiting."
     exit 1
 }
@@ -147,4 +147,5 @@ sudo systemctl enable lightdm.service
 
 # Print success message
 echo "Qtile config installed successfully!"
-
+echo "Rebooting..."
+reboot
