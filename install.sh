@@ -65,16 +65,16 @@ chown -R $username:$username /home/$username
 
 # make user directories
 cd $home_dir
-xdg-user-dirs-update
-
 
 # Install the required packages
 echo "Installing dependencies..."
 
-pacman -Syu --needed "${PACKAGES[@]}" || {
+pacman -Syu --needed "${PACKAGES[@]}" -y || {
     echo "Failed to install dependencies. Exiting."
     exit 1
 }
+
+xdg-user-dirs-update
 
 # Copy the configuration files
 echo "Copying configuration files..."
