@@ -41,12 +41,12 @@ if [[ $EUID -ne 0 ]]; then
     exit 1
 fi
 
-echo # _   __ _     _                  
-echo #| | / /| |   (_)                 
-echo #| |/ / | |    _ _ __  _   ___  __
-echo #|    \ | |   | | '_ \| | | \ \/ /
-echo #| |\  \| |___| | | | | |_| |>  < 
-echo #\_| \_/\_____/_|_| |_|\__,_/_/\_\
+echo "# _   __ _     _ "                 
+echo "#| | / /| |   (_) "                
+echo "#| |/ / | |    _ _ __  _   ___  __ "
+echo "#|    \ | |   | | '_ \| | | \ \/ / "
+echo "#| |\  \| |___| | | | | |_| |>  < "
+echo "#\_| \_/\_____/_|_| |_|\__,_/_/\_\ "
 
 username=$(id -u -n 1000)
 home_dir=$(eval echo ~$username)
@@ -88,7 +88,7 @@ git clone https://github.com/kaveen-lakmuthu/qtile.git $home_dir/.config/qtile |
 }
 
 # Copy picom configuration
-git clone https://github.com/kaveen-lakmuthu/k-picomgit || {
+git clone https://github.com/kaveen-lakmuthu/k-picom.git || {
     echo "Failed to copy the picom configuration file. Exiting."
     exit 1
 }
