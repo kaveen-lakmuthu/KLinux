@@ -36,7 +36,7 @@ PACKAGES=(
 )
 
 # Check if Script is Run as user
-if
+
 if [[ $EUID -ne 1000 ]]; then
     echo "====================================================" 2>&1
     echo "You must be a non-root user to run this script" 2>&1
@@ -116,11 +116,11 @@ git clone https://github.com/kaveen-lakmuthu/k-zsh.git || {
     exit 1
 }
 
-mv qtile/ $home_dir/.config/qtile
+mv qtile/ $home_dir/.config/
 mv k-picom/picom.conf $home_dir/.config/picom/picom.conf
 mv KAlacritty/alacritty.toml $home_dir/.config/alacritty/alacritty.toml
 mv k-zsh/.zshenv $home_dir/.zshenv
-mv k-zsh/zsh/ $home_dir/.config/zsh
+mv k-zsh/zsh $home_dir/.config/
 
 rm -rf k-picom KAlacritty k-zsh qtile
 
